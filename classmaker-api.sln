@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classmaker-api", "classmaker-api\classmaker-api.csproj", "{A9C6FD4C-5255-4CFA-811A-C6FE2B0DD398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classmaker-models", "classmaker-models\classmaker-models.csproj", "{90297026-C606-4CB5-A128-C83818A1156B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classmaker-services", "classmaker-services\classmaker-services.csproj", "{A290820E-3C6D-4475-92D8-9222B0E69BA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classmaker-repository", "classmaker-repository\classmaker-repository.csproj", "{D56F8360-03EA-4A68-A772-7A582CD87B95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9C6FD4C-5255-4CFA-811A-C6FE2B0DD398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C6FD4C-5255-4CFA-811A-C6FE2B0DD398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C6FD4C-5255-4CFA-811A-C6FE2B0DD398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C6FD4C-5255-4CFA-811A-C6FE2B0DD398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90297026-C606-4CB5-A128-C83818A1156B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90297026-C606-4CB5-A128-C83818A1156B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90297026-C606-4CB5-A128-C83818A1156B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90297026-C606-4CB5-A128-C83818A1156B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A290820E-3C6D-4475-92D8-9222B0E69BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A290820E-3C6D-4475-92D8-9222B0E69BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A290820E-3C6D-4475-92D8-9222B0E69BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A290820E-3C6D-4475-92D8-9222B0E69BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56F8360-03EA-4A68-A772-7A582CD87B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56F8360-03EA-4A68-A772-7A582CD87B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56F8360-03EA-4A68-A772-7A582CD87B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56F8360-03EA-4A68-A772-7A582CD87B95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
