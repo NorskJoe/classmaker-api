@@ -6,7 +6,7 @@ namespace classmaker_models.Entities
     public class Student
     {
         [Required] 
-        public int StudentId { get; set; }
+        public int StudentId { get; init; }
         
         [Required]
         public string Firstname { get; set; }
@@ -25,5 +25,7 @@ namespace classmaker_models.Entities
         
         [Range(1, 3)]
         public LearningDifficulty LearningDifficulty { get; set; }
+        
+        public Classroom Classroom { get; set; }
     }
 }

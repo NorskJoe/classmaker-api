@@ -48,6 +48,11 @@ namespace classmaker_api.Controllers
             return Ok(student);
         }
         
+        /// <summary>
+        /// Add a student
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns>Result with errors or success</returns>
         [HttpPost("add")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

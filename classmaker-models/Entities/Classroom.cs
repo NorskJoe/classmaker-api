@@ -6,9 +6,6 @@ namespace classmaker_models.Entities
     {
         [Required]
         public int ClassroomId { get; set; }
-        
-        [Required]
-        public int StudentId { get; set; }
 
         public string Name { get; set; }
     }

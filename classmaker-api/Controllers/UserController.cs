@@ -89,6 +89,11 @@ namespace classmaker_api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Delete a user by iD
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Result object with success or error</returns>
         [HttpDelete("{id}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -98,6 +103,11 @@ namespace classmaker_api.Controllers
             return Ok(await _userRepository.DeleteById(id));
         }
         
+        /// <summary>
+        /// Delete a user by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>Result object with success or error</returns>
         [HttpDelete("{username}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]

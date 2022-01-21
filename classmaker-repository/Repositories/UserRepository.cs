@@ -44,7 +44,7 @@ namespace classmaker_repository.Repositories
         Task<Result> DeleteById(int id);
 
         /// <summary>
-        /// Delets a user with a given username
+        /// Deletes a user with a given username
         /// </summary>
         /// <param name="username"></param>
         /// <returns>Result object with success or error</returns>

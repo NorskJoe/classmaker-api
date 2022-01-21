@@ -3,36 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using classmaker_models;
 
 namespace classmaker_models.Migrations
 {
     [DbContext(typeof(EntityContext))]
-    partial class EntityContextModelSnapshot : ModelSnapshot
+    [Migration("20220121024317_DropClassroomTable")]
+    partial class DropClassroomTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("classmaker_models.Entities.Classroom", b =>
-                {
-                    b.Property<int>("ClassroomId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ClassroomId");
-
-                    b.ToTable("Classrooms");
-                });
 
             modelBuilder.Entity("classmaker_models.Entities.Student", b =>
                 {
@@ -45,9 +32,6 @@ namespace classmaker_models.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Behaviour")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ClassroomId")
                         .HasColumnType("int");
 
                     b.Property<string>("Firstname")
@@ -66,8 +50,6 @@ namespace classmaker_models.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StudentId");
-
-                    b.HasIndex("ClassroomId");
 
                     b.ToTable("Students");
                 });
@@ -91,15 +73,6 @@ namespace classmaker_models.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("classmaker_models.Entities.Student", b =>
-                {
-                    b.HasOne("classmaker_models.Entities.Classroom", "Classroom")
-                        .WithMany()
-                        .HasForeignKey("ClassroomId");
-
-                    b.Navigation("Classroom");
                 });
 #pragma warning restore 612, 618
         }
