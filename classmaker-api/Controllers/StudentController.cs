@@ -53,7 +53,7 @@ namespace classmaker_api.Controllers
         /// </summary>
         /// <param name="student"></param>
         /// <returns>Result with errors or success</returns>
-        [HttpPost("add")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Result>> AddStudent([FromBody] Student student)
