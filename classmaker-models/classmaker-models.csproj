@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>classmaker_models</RootNamespace>
-        <LangVersion>10</LangVersion>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

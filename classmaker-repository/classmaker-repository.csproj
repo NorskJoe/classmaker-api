@@ -5,7 +5,7 @@
         <RootNamespace>classmaker_repository</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <LangVersion>10</LangVersion>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

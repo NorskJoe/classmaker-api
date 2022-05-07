@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using classmaker_models.Dtos;
 using classmaker_models.Entities;
-using classmaker_models.QueryModels;
-using classmaker_repository.Repositories;
+using classmaker_repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +27,7 @@ namespace classmaker_api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Student</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

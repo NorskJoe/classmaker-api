@@ -3,8 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using classmaker_models.Dtos;
 using classmaker_models.Entities;
-using classmaker_models.QueryModels;
-using classmaker_repository.Repositories;
+using classmaker_repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,7 +54,7 @@ namespace classmaker_api.Controllers
 			return Ok(await _classroomRepository.AddClassroom(classroom));
 		}
 		
-		[HttpDelete("{id}")]
+		[HttpDelete("{id:int}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		public async Task<ActionResult<Result>> DeleteClassroom(int id)
 		{

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace classmaker_models.QueryModels
+namespace classmaker_models.Dtos
 {
     public class Result
     {

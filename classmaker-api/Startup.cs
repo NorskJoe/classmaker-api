@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using classmaker_api.Middleware;
 using classmaker_models;
 using classmaker_models.Config;
-using classmaker_repository.Repositories;
+using classmaker_repositories;
 using classmaker_services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using classmaker_models.Config;
-using classmaker_repository.Repositories;
+using classmaker_repositories;
 using classmaker_services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -29,12 +29,12 @@ namespace classmaker_api.Middleware
 			var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
 			if (token != null)
-				attachUserToContext(context, userRepository, token);
+				AttachUserToContext(context, userRepository, token);
 
 			await _next(context);
 		}
 
-		private void attachUserToContext(HttpContext context, IUserRepository userRepository, string token)
+		private void AttachUserToContext(HttpContext context, IUserRepository userRepository, string token)
 		{
 			try
 			{

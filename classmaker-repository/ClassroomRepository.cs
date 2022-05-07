@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 using classmaker_models;
 using classmaker_models.Dtos;
 using classmaker_models.Entities;
-using classmaker_models.QueryModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace classmaker_repository.Repositories
+namespace classmaker_repositories
 {
 	/// <summary>
 	/// Access to classroom objects in the db

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using classmaker_models.Dtos;
 using classmaker_models.Entities;
-using classmaker_repository.Repositories;
+using classmaker_repositories;
 using classmaker_services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -94,7 +94,7 @@ namespace classmaker_api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Result object with success or error</returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
