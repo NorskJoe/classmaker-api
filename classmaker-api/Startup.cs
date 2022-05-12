@@ -87,6 +87,7 @@ namespace classmaker_api
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IClassroomRepository, ClassroomRepository>();
+            services.AddCors();
 
         }
 
@@ -109,6 +110,13 @@ namespace classmaker_api
             app.UseAuthentication();
             
             app.UseAuthorization();
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

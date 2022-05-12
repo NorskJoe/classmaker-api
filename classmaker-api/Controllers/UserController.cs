@@ -35,7 +35,6 @@ namespace classmaker_api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login([FromBody] AuthUserDto user)
         {
-            
             if (!ModelState.IsValid || 
                 string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
             {
