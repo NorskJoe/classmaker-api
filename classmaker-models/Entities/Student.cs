@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using classmaker_models.Enums;
 
 namespace classmaker_models.Entities
@@ -27,5 +28,7 @@ namespace classmaker_models.Entities
         public LearningDifficulty LearningDifficulty { get; set; }
         
         public Classroom Classroom { get; set; }
+        
+        public bool LockedInClassroom { get; set; }
     }
 }
