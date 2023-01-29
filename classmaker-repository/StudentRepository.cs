@@ -34,6 +34,13 @@ namespace classmaker_repositories
         /// <param name="student"></param>
         /// <returns>Result with errors or success</returns>
         Task<Result> AddStudent(Student student);
+
+        /// <summary>
+        /// Add a bath of students.  Used by file upload service
+        /// </summary>
+        /// <param name="students"></param>
+        /// <returns>Result</returns>
+        Task<Result> AddStudents(IEnumerable<Student> students);
         
         /// <summary>
         /// Delete an existing student by ID
@@ -78,6 +85,24 @@ namespace classmaker_repositories
             try
             {
                 _context.Students.Add(student);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("An unexpected error occurred: {Message}", ex.Message);
+                result.AddError(ex.Message);
+            }
+
+            return result;
+        }
+
+        public async Task<Result> AddStudents(IEnumerable<Student> students)
+        {
+            var result = new Result();
+
+            try
+            {
+                _context.Students.AddRange(students);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)

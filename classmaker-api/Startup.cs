@@ -85,8 +85,9 @@ namespace classmaker_api
             // service registering
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IClassroomRepository, ClassroomRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IFileUploadService, FileUploadService>();
             services.AddCors();
 
         }

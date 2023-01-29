@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using classmaker_models.Dtos;
 using classmaker_models.Entities;
 using classmaker_repositories;
+using classmaker_services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,13 @@ namespace classmaker_api.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentRepository _studentRepository;
+        private readonly IFileUploadService _fileService;
         
-        public StudentController(IStudentRepository studentRepository)
+        public StudentController(IStudentRepository studentRepository,
+            IFileUploadService fileService)
         {
             _studentRepository = studentRepository;
+            _fileService = fileService;
         }
     
         /// <summary>
@@ -114,6 +118,19 @@ namespace classmaker_api.Controllers
         {
             return Ok(await _studentRepository.DeleteStudent(id));
         }
+
+        /// <summary>
+        /// Add students in bulk via csv file
+        /// </summary>
+        /// <param name="studentFile"></param>
+        /// <returns>Result object indicating success or errors</returns>
+        [HttpPost("file-upload")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult> BulkAddStudents([FromForm] IFormFileCollection studentFile)
+        {
+            return Ok(await _fileService.UploadFile(studentFile[0].OpenReadStream()));
+        }
+        
 
     }
 }
