@@ -126,8 +126,14 @@ namespace classmaker_api.Controllers
         /// <returns>Result object indicating success or errors</returns>
         [HttpPost("file-upload")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> BulkAddStudents([FromForm] IFormFileCollection studentFile)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            
             return Ok(await _fileService.UploadFile(studentFile[0].OpenReadStream()));
         }
         
