@@ -19,7 +19,7 @@ namespace classmaker_repositories
 		/// Get all classrooms and the students they contain
 		/// </summary>
 		/// <returns>List of classrooms with students</returns>
-		Task<List<ClassroomDto>> GetClassrooms();
+		Task<List<Classroom>> GetClassrooms();
 
 		/// <summary>
 		/// Add a classroom
@@ -47,18 +47,9 @@ namespace classmaker_repositories
 			_logger = logger;
 		}
 
-		public async Task<List<ClassroomDto>> GetClassrooms()
+		public async Task<List<Classroom>> GetClassrooms()
 		{
-			return await _context.Classrooms
-				.Select(x => new ClassroomDto
-				{
-					ClassroomId = x.ClassroomId,
-					Name = x.Name,
-					Students = _context.Students
-						.Where(s => s.Classroom.ClassroomId == x.ClassroomId)
-						.ToList()
-				})
-				.ToListAsync();
+			return await _context.Classrooms.ToListAsync();
 		}
 
 		public async Task<Result> AddClassroom(Classroom classroom)

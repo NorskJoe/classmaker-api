@@ -23,13 +23,13 @@ namespace classmaker_api.Controllers
 		}
 		
 		/// <summary>
-		/// Get all classrooms and the student's that are in them
+		/// Get all classrooms
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
-		public async Task<ActionResult<List<ClassroomDto>>> GetClassrooms()
+		public async Task<ActionResult<List<Classroom>>> GetClassrooms()
 		{
 			var classrooms = await _classroomRepository.GetClassrooms();
 

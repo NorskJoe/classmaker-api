@@ -140,6 +140,11 @@ namespace classmaker_api.Controllers
             return Ok(await _fileService.UploadFile(studentFile[0].OpenReadStream()));
         }
 
+        /// <summary>
+        /// Sort students into the currently defined classrooms
+        /// </summary>
+        /// <param name="students"></param>
+        /// <returns></returns>
         [HttpPost("sort-students")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<Result<List<Student>>>> SortStudents([FromBody] List<Student> students)

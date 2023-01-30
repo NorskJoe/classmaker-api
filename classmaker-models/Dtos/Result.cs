@@ -17,6 +17,11 @@ namespace classmaker_models.Dtos
         {
             Errors.Add(error);
         }
+
+        public void AddErrors(List<string> errors)
+        {
+            Errors.AddRange(errors);
+        }
     }
 
     public class Result<T> : Result

@@ -36,13 +36,17 @@ namespace classmaker_services.Services
         
         public async Task<Result<List<Student>>> CalculateClassrooms(IEnumerable<Student> students)
         {
-            // TODO: Need to make sure I am saving/updating the students properly
             var result = new Result<List<Student>>();
             var classrooms = await _classroomRepository.GetClassrooms();
-            var studentsToSort = students.Where(x => x.LockedInClassroom == false);
             
+            if (!classrooms.Any())
+            {
+                result.AddError("No classrooms exist yet");
+                return result;
+            }
+
             // 1. Sort by difficulty
-            studentsToSort = SortStudentsByDifficulty(studentsToSort);
+            var studentsToSort = SortStudentsByDifficulty(students.Where(x => x.LockedInClassroom == false));
             
             // 2. Split into Male/Female 
             var maleStudents = studentsToSort.Where(x => x.Gender == "M").ToList();
@@ -50,11 +54,13 @@ namespace classmaker_services.Services
 
             // 3. Divide into classrooms and save
             result.Value = DivideStudentsIntoClassrooms(maleStudents, femaleStudents, classrooms);
-            await _studentRepository.UpdateStudents(result.Value);
+            var saveResult = await _studentRepository.UpdateStudents(result.Value);
+            
+            result.AddErrors(saveResult.Errors);
             return result;
         }
 
-        private static List<Student> DivideStudentsIntoClassrooms(List<Student> maleStudents, List<Student> femaleStudents, List<ClassroomDto> classrooms)
+        private static List<Student> DivideStudentsIntoClassrooms(List<Student> maleStudents, List<Student> femaleStudents, List<Classroom> classrooms)
         {
             var sortedStudents = new List<Student>();
             
@@ -65,7 +71,7 @@ namespace classmaker_services.Services
         }
 
         private static IEnumerable<Student> DivideGenderedStudents(List<Student> students,
-            List<ClassroomDto> classrooms)
+            List<Classroom> classrooms)
         {
             var sortedStudents = new List<Student>();
             var classroomMaxLength = classrooms.Count - 1;
@@ -78,7 +84,7 @@ namespace classmaker_services.Services
                 }
                 
                 var currentStudent = students[j]; 
-                currentStudent.Classroom = ClassroomDtoHelper.DtoToClassroomMap(classrooms[currentClassroomIndex]);
+                currentStudent.Classroom = classrooms[currentClassroomIndex];
                 sortedStudents.Add(currentStudent);
                 students.RemoveAt(j);
                 currentClassroomIndex++;
