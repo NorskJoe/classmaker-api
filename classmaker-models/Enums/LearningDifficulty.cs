@@ -2,8 +2,8 @@
 {
     public enum LearningDifficulty
     {
-        Severe = 3,
+        None = 3,
         Moderate = 2,
-        None = 1
+        Severe = 1
     }
 }

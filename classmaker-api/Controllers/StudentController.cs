@@ -18,12 +18,15 @@ namespace classmaker_api.Controllers
     {
         private readonly IStudentRepository _studentRepository;
         private readonly IFileUploadService _fileService;
+        private readonly IClassroomCalculatorService _classroomCalculatorService;
         
         public StudentController(IStudentRepository studentRepository,
-            IFileUploadService fileService)
+            IFileUploadService fileService,
+            IClassroomCalculatorService classroomCalculatorService)
         {
             _studentRepository = studentRepository;
             _fileService = fileService;
+            _classroomCalculatorService = classroomCalculatorService;
         }
     
         /// <summary>
@@ -136,7 +139,12 @@ namespace classmaker_api.Controllers
             
             return Ok(await _fileService.UploadFile(studentFile[0].OpenReadStream()));
         }
-        
 
+        [HttpPost("sort-students")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<Result<List<Student>>>> SortStudents([FromBody] List<Student> students)
+        {
+            return Ok(await _classroomCalculatorService.CalculateClassrooms(students));
+        }
     }
 }

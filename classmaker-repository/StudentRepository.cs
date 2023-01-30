@@ -46,15 +46,22 @@ namespace classmaker_repositories
         /// Delete an existing student by ID
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Result object indicating success, or containing errors/warnings</returns>
+        /// <returns>Result object indicating success, or containing errors</returns>
         Task<Result> DeleteStudent(int id);
         
         /// <summary>
         /// Update an existing student with new values
         /// </summary>
         /// <param name="student"></param>
-        /// <returns>Result object indicating success, or containing errors/warnings</returns>
+        /// <returns>Result object indicating success, or containing errors</returns>
         Task<Result> UpdateStudent(Student student);
+
+        /// <summary>
+        /// Update all students in list
+        /// </summary>
+        /// <param name="students"></param>
+        /// <returns>Result object indicating success, or containing errors</returns>
+        Task<Result> UpdateStudents(List<Student> students);
     }
 
     public class StudentRepository : IStudentRepository
@@ -145,6 +152,24 @@ namespace classmaker_repositories
             {
                 _logger.LogError("An unexpected error occurred: {Message}", ex.Message);
                 result.AddError(ex.Message);
+            }
+
+            return result;
+        }
+
+        public async Task<Result> UpdateStudents(List<Student> students)
+        {
+            var result = new Result();
+
+            try
+            {
+                _context.Students.UpdateRange(students);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("An unexpected error occurred: {Message}", e.Message);
+                result.AddError(e.Message);
             }
 
             return result;

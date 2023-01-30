@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using classmaker_models.Entities;
 
 namespace classmaker_models.Dtos
@@ -8,5 +9,17 @@ namespace classmaker_models.Dtos
 		public int ClassroomId { get; set; }
 		public string Name { get; set; }
 		public List<Student> Students { get; set; }
+	}
+
+	public static class ClassroomDtoHelper
+	{
+		public static Classroom DtoToClassroomMap(ClassroomDto classroomDto)
+		{
+			return new Classroom
+			{
+				ClassroomId = classroomDto.ClassroomId,
+				Name = classroomDto.Name
+			};
+		}
 	}
 }

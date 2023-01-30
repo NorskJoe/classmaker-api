@@ -29,5 +29,7 @@ namespace classmaker_models.Entities
         public Classroom Classroom { get; set; }
         
         public bool LockedInClassroom { get; set; }
+        
+        public double DifficultyRating { get; set; }
     }
 }
